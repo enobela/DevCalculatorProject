@@ -33,23 +33,23 @@ jobs:
   #Compile classess to test 
     - name: compile classes
       working-directory: ./src
-      run: javac -cp "../testresources/junit-platform-console-statndalone-5.12.1.jar" ./DevCalculator/Calculator.java"../test/DevCalculator/DTest.java"
+      run: javac -cp "../testresources/junit-platform-console-statndalone-5.12.1.jar" ./devCalculator/Calculator.java"../test/devCalculator/DTest.java"
   # list contents of src to verify that all classes compiled
     - name: List contents of src directory after compile
-      working-directory: /.src/DevCalculator
+      working-directory: /.src/devCalculator
       run: ls
   # Copy compiled classess to test directory
     - name: copy compiled classes to testresources directory
-      working-directory: ./src/DevCalculator
-      run: cp -t "../test/DevCalculator" DTest.Class
+      working-directory: ./src/devCalculator
+      run: cp -t "../test/devCalculator" DTest.Class
       
    # list of contents or directory
     - name: List contents test package
-      working-directory: ./test/DevCalculator
+      working-directory: ./test/devCalculator
       run: ls
 
    # Run the DTest class tests and output the report
     - name: run the DTest Class Tests and create report
       working-directory: ./test
-      run: ls  java -jar "../testresources/junit-platform-console-5.12.1.jar" -cp "." --select-class DecCalculator.DTest
+      run: ls  java -jar "../testresources/junit-platform-console-5.12.1.jar" -cp "." --select-class devCalculator.DTest
    
