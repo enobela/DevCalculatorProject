@@ -1,0 +1,55 @@
+# This is a basic workflow that is manually triggered
+
+name: DevCalTest
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+ # Triggers the workflow on push or pull request events but only for the master branch
+ push:
+  branches: [ main ]
+ pull_request:
+   branches: [ main ]
+
+# Allows you to run this workflow manually from the Actions tab
+ workflow_dispatch:
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    #Checks out your repository
+    - uses: actions/checkout@v3
+
+    #list of contents or directory
+    # Runs a single command using the runners shell
+    - name: List contents
+      run: ls
+
+  #Compile classess to test 
+    - name: compile classes
+      working-directory: ./src
+      run: javac -cp "../testresources/junit-platform-console-statndalone-5.12.1.jar" ./DevCalculator/DevCalculator.java ./DevCalculator/Calculator.java "../test/DevCalculator/DTest.java"
+  # list contents of src to verify that all classes compiled
+    - name: List contents of src directory after compile
+      working-directory: /.src/DevCalculator
+      run: ls
+  # Copy compiled classess to test directory
+    - name: copy compiled classes to testresources directory
+      working-directory: ./src/DevCalculator
+      run: cp -t "../test/DevCalculator" DTest.Class
+      
+   # list of contents or directory
+    - name: List contents test package
+      working-directory: ./test/DevCalculator
+      run: ls
+
+   # Run the DTest class tests and output the report
+    - name: run the DTest Class Tests and create report
+      working-directory: ./test
+      run: ls  java -jar "../testresources/junit-platform-console-5.12.1.jar" -cp "." --select-class DecCalculator.DTest
+   
