@@ -33,7 +33,7 @@ jobs:
   #Compile classess to test 
     - name: compile classes
       working-directory: ./src
-      run: javac -cp "../testresources/junit-platform-console-statndalone-5.12.1.jar" ./DevCalculator/Calculator.java ./DevCalculator/Calculator.java "../test/DevCalculator/DTest.java"
+      run: javac -cp "../testresources/junit-platform-console-statndalone-5.12.1.jar" ./DevCalculator/Calculator.java"../test/DevCalculator/DTest.java"
   # list contents of src to verify that all classes compiled
     - name: List contents of src directory after compile
       working-directory: /.src/DevCalculator
