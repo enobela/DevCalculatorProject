@@ -33,15 +33,15 @@ jobs:
   #Compile classess to test 
     - name: compile classes
       working-directory: ./src
-      run: javac -cp "../testresources/junit-platform-console-statndalone-5.12.1.jar" ./devCalculator/Calculator.java"../test/devCalculator/DTest.java"
+      run: javac -cp "../testresources/junit-platform-console-statndalone-5.12.1.jar" ./main/java/com/mycompany/devCalculator/Calculator.java"../test/java/devCalculator/DTest.java"
   # list contents of src to verify that all classes compiled
     - name: List contents of src directory after compile
-      working-directory: /.src/devCalculator
+      working-directory: /.src/main/java/com/mycompany/devCalculator
       run: ls
   # Copy compiled classess to test directory
     - name: copy compiled classes to testresources directory
-      working-directory: ./src/devCalculator
-      run: cp -t "../test/devCalculator" DTest.Class
+      working-directory: ./src/main/java/com/mycompany/devCalculator
+      run: cp -t "../test/java/devCalculator" DTest.Class
       
    # list of contents or directory
     - name: List contents test package
